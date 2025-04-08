@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Workspace\\My personal data\\Projects\\RadioProject\\RadioStation.Server\\wwwroot\\audio\\1 - Copy.mp3",
+      "PackagePath": "staticwebassets\\audio\\1 - Copy.mp3"
+    },
+    {
+      "Id": "C:\\Workspace\\My personal data\\Projects\\RadioProject\\RadioStation.Server\\wwwroot\\audio\\1.mp3",
+      "PackagePath": "staticwebassets\\audio\\1.mp3"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.RadioStation.Server.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.RadioStation.Server.props",
+      "PackagePath": "build\\RadioStation.Server.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.RadioStation.Server.props",
+      "PackagePath": "buildMultiTargeting\\RadioStation.Server.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.RadioStation.Server.props",
+      "PackagePath": "buildTransitive\\RadioStation.Server.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

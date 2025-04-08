@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Google.Protobuf" Version="3.30.2" />
+        <PackageReference Include="Grpc" Version="2.46.6" />
+        <PackageReference Include="Grpc.Tools" Version="2.71.0">
+            
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+
+        <PackageReference Include="Grpc.AspNetCore.Server" Version="2.27.0" />
+        <PackageReference Include="Grpc.HealthCheck" Version="2.27.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="NLog.Extensions.Logging" Version="1.4.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+        <PackageReference Include="System.ServiceModel.Primitives" Version="4.5.3" />
+        <None Remove="api.proto" />
+
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.3" />
+
+        <PackageReference Include="NLog" Version="5.2.8" />
+        <Protobuf Include="api.proto" ClientBaseType="ClientBase" />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,77 @@
+﻿@{
+ViewData["Title"] = "Radio Station Control Panel";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Radio Station Control</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <button id="startBtn" class="btn btn-success btn-lg">Start Broadcast</button>
+                    <button id="stopBtn" class="btn btn-danger btn-lg">Stop Broadcast</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">Current Status</div>
+                        <div class="card-body">
+                            <p id="statusText">Loading...</p>
+                            <p>Listeners: <span id="listenersCount">0</span></p>
+                            <p>Current track: <span id="currentTrack">-</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    $(document).ready(function() {
+        // Обновление статуса каждые 5 секунд
+        function updateStatus() {
+            $.get("/radio/status", function(data) {
+                const statusText = data.isPlaying
+                    ? "🟢 Broadcasting"
+                    : "🔴 Not broadcasting";
+
+                $("#statusText").text(statusText);
+                $("#listenersCount").text(data.listeners);
+                $("#currentTrack").text(data.currentTrack || "-");
+            }).fail(() => console.log("Status update failed"));
+        }
+
+        // Инициализация
+        updateStatus();
+        setInterval(updateStatus, 5000);
+
+        // Обработчики кнопок
+        $("#startBtn").click(function() {
+            $(this).prop("disabled", true);
+            $.post("/radio/start", function(data) {
+                if (data.success) {
+                    toastr.success(data.message);
+                } else {
+                    toastr.error(data.message);
+                }
+            }).always(() => $(this).prop("disabled", false));
+        });
+
+        $("#stopBtn").click(function() {
+            $(this).prop("disabled", true);
+            $.post("/radio/stop", function(data) {
+                if (data.success) {
+                    toastr.success(data.message);
+                } else {
+                    toastr.error(data.message);
+                }
+            }).always(() => $(this).prop("disabled", false));
+        });
+    });
+</script>
+}

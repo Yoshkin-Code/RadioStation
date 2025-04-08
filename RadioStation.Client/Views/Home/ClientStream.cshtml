@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>gRPC Audio Stream via WebSocket</title>
+</head>
+<body>
+<h1>Audio Stream</h1>
+<button id="playButton">Play</button>
+<button id="stopButton" disabled>Stop</button>
+<div id="status">Ready</div>
+
+<script>
+    let audio;
+    let mediaSource;
+    let sourceBuffer;
+    let ws;
+    let isPlaying = false;
+    const queue = [];
+
+    const playButton = document.getElementById('playButton');
+    const stopButton = document.getElementById('stopButton');
+    const statusDiv = document.getElementById('status');
+
+    playButton.addEventListener('click', startStreaming);
+    stopButton.addEventListener('click', stopStreaming);
+
+    function updateStatus(msg) {
+        statusDiv.textContent = msg;
+    }
+
+    function startStreaming() {
+        if (isPlaying) return;
+        isPlaying = true;
+        playButton.disabled = true;
+        stopButton.disabled = false;
+        updateStatus("Connecting...");
+
+        mediaSource = new MediaSource();
+        audio = new Audio();
+        audio.src = URL.createObjectURL(mediaSource);
+        audio.play().catch(err => updateStatus("Playback error: " + err.message));
+
+        mediaSource.addEventListener('sourceopen', () => {
+            try {
+                sourceBuffer = mediaSource.addSourceBuffer('audio/mpeg');
+                sourceBuffer.addEventListener('updateend', () => {
+                    if (queue.length > 0 && !sourceBuffer.updating) {
+                        sourceBuffer.appendBuffer(queue.shift());
+                    }
+                });
+
+                connectWebSocket();
+            } catch (err) {
+                updateStatus("SourceBuffer error: " + err.message);
+                stopStreaming();
+            }
+        });
+    }
+
+    function connectWebSocket() {
+        const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+        const wsUrl = `${protocol}://${window.location.host}/audio/stream-socket`;
+        ws = new WebSocket(wsUrl);
+        ws.binaryType = "arraybuffer";
+
+        ws.onopen = () => updateStatus("Streaming...");
+        ws.onerror = err => {
+            console.error("WebSocket error", err);
+            updateStatus("WebSocket error");
+            stopStreaming();
+        };
+        ws.onclose = () => {
+            updateStatus("Connection closed");
+            stopStreaming();
+        };
+        ws.onmessage = (event) => {
+            const chunk = new Uint8Array(event.data);
+            if (!sourceBuffer || sourceBuffer.updating) {
+                queue.push(chunk);
+            } else {
+                sourceBuffer.appendBuffer(chunk);
+            }
+        };
+    }
+
+    function stopStreaming() {
+        if (!isPlaying) return;
+        isPlaying = false;
+
+        if (ws && ws.readyState === WebSocket.OPEN) {
+            ws.close();
+        }
+
+        if (audio) {
+            audio.pause();
+            audio.removeAttribute('src');
+            audio.load();
+        }
+
+        if (mediaSource && mediaSource.readyState === "open") {
+            mediaSource.endOfStream();
+        }
+
+        queue.length = 0;
+        playButton.disabled = false;
+        stopButton.disabled = true;
+        updateStatus("Stopped");
+    }
+</script>
+</body>
+</html>

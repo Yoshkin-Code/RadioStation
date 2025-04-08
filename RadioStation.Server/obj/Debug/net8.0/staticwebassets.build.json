@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "Hash": "9bKOWajAeuwNb/EKeZKvGCcg7/UthoP8rIS0z8NCgX4=",
+  "Source": "RadioStation.Server",
+  "BasePath": "_content/RadioStation.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "RadioStation.Server\\wwwroot",
+      "Source": "RadioStation.Server",
+      "ContentRoot": "C:\\Workspace\\My personal data\\Projects\\RadioProject\\RadioStation.Server\\wwwroot\\",
+      "BasePath": "_content/RadioStation.Server",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Workspace\\My personal data\\Projects\\RadioProject\\RadioStation.Server\\wwwroot\\audio\\1 - Copy.mp3",
+      "SourceId": "RadioStation.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Workspace\\My personal data\\Projects\\RadioProject\\RadioStation.Server\\wwwroot\\",
+      "BasePath": "_content/RadioStation.Server",
+      "RelativePath": "audio/1 - Copy.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\audio\\1 - Copy.mp3"
+    },
+    {
+      "Identity": "C:\\Workspace\\My personal data\\Projects\\RadioProject\\RadioStation.Server\\wwwroot\\audio\\1.mp3",
+      "SourceId": "RadioStation.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Workspace\\My personal data\\Projects\\RadioProject\\RadioStation.Server\\wwwroot\\",
+      "BasePath": "_content/RadioStation.Server",
+      "RelativePath": "audio/1.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\audio\\1.mp3"
+    }
+  ]
+}

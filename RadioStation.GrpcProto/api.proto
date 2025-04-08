@@ -1,0 +1,51 @@
+﻿syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "RadioStationServer.GrpcProto";
+
+package RadioStationServer.GrpcProto;
+
+service RadioControl {
+	rpc StartStream (StreamRequest) returns (StreamResponse);
+	rpc StopStream (StopRequest) returns (StreamResponse);
+	rpc GetStreamStatus (StatusRequest) returns (StreamStatus);
+
+	rpc StreamAudio (AudioRequest) returns (stream AudioChunk);
+	
+	rpc Ping(PingRequest) returns(PingResponse){}
+}
+
+message StreamRequest {
+}
+
+message StopRequest {}
+
+message StatusRequest {}
+
+message StreamResponse {
+	bool Success = 1;
+	string Message = 2;
+}
+
+message StreamStatus {
+	bool IsPlaying = 1;
+	string CurrentTrack = 2;
+	int64 ListenersCount = 3;
+}
+
+message AudioRequest {
+	int32 UserId = 1;
+}
+
+message AudioChunk {
+	bytes Data = 1;
+	int32 SampleRate = 2;
+	int64 Position = 3;
+}
+
+message PingRequest{
+}
+
+message PingResponse{
+}

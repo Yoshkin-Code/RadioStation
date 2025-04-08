@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadioStation.Server", "RadioStation.Server\RadioStation.Server.csproj", "{6F6DBD57-9BC8-4105-A121-0EC277C68046}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadioStation.GrpcProto", "RadioStation.GrpcProto\RadioStation.GrpcProto.csproj", "{6D77C1D6-5B88-4486-9A77-249A83EC2FB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadioStation.Backoffice", "RadioStation.Backoffice\RadioStation.Backoffice.csproj", "{22BD9032-24CB-4B11-8B49-7590377D0CB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadioStation.Client", "RadioStation.Client\RadioStation.Client.csproj", "{3EB2AB81-B643-490D-9138-99352E925476}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F6DBD57-9BC8-4105-A121-0EC277C68046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F6DBD57-9BC8-4105-A121-0EC277C68046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F6DBD57-9BC8-4105-A121-0EC277C68046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F6DBD57-9BC8-4105-A121-0EC277C68046}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D77C1D6-5B88-4486-9A77-249A83EC2FB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D77C1D6-5B88-4486-9A77-249A83EC2FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D77C1D6-5B88-4486-9A77-249A83EC2FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D77C1D6-5B88-4486-9A77-249A83EC2FB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22BD9032-24CB-4B11-8B49-7590377D0CB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22BD9032-24CB-4B11-8B49-7590377D0CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22BD9032-24CB-4B11-8B49-7590377D0CB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22BD9032-24CB-4B11-8B49-7590377D0CB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EB2AB81-B643-490D-9138-99352E925476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EB2AB81-B643-490D-9138-99352E925476}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EB2AB81-B643-490D-9138-99352E925476}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EB2AB81-B643-490D-9138-99352E925476}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
